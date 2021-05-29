@@ -191,6 +191,13 @@ $var4 = rand(1000, 9999);
 $var5 = rand(1000, 9999);
 $var6 = rand(1000, 9999);
 echo "Skaičius1 = $var1; Skaičius2 = $var2; Skaičius3 = $var3; Skaičius4 = $var4; Skaičius5 = $var5; Skaičius6 = $var6.<br>";
+
+$string = strval($var1) . ' ' . strval($var2) . ' ' . strval($var3) . ' ' . strval($var4) . ' ' . strval($var5) . ' ' . strval($var6) . ' ';
+$stringParts = str_split($string, 5);
+rsort($stringParts);
+echo 'String of descending variables: ' . implode($stringParts) . '<br><br>';
+
+echo '-------- -------- 11 PRIMITIVE -------- --------<br>';
 if ($var1 < $var2) {
     $temp = $var1;
     $var1 = $var2;
@@ -266,5 +273,6 @@ if ($var5 < $var6) {
     $var5 = $var6;
     $var6 = $temp;
 }
-$string = strval($var1) . ' ' . strval($var2) . ' ' . strval($var3) . ' ' . strval($var4) . ' ' . strval($var5) . ' ' . strval($var6);
+$string = strval($var1) . ' ' . strval($var2) . ' ' . strval($var3) . ' ' . strval($var4) . ' ' . strval($var5) . ' ' . strval($var6) . ' ';
 echo "String of descending variables: $string";
+echo '<br><br>';
