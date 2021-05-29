@@ -165,22 +165,17 @@ echo '-------- -------- 10 -------- --------<br>';
 $hours = rand(0, 23);
 $minutes = rand(0, 59);
 $seconds = rand(0, 59);
-$number = rand(0, 300);
+$number = rand(0, 1000000);
 echo "Old Time: $hours : $minutes : $seconds<br>";
 $seconds += $number % 60;
-$minutes += intval($number / 60);
-if ($seconds > 59) {
-    $minutes++;
-    $seconds -= 60;
+$minutes += intval($number / 60) % 60;
+$hours += intval($number / 3600) % 24;
+$days = intval($number / (3600 * 24));
+if ($days === 0) {
+    echo "New Time: $hours : $minutes : $seconds<br>Number of added seconds = $number.";
+} else {
+    echo "New Time: (+$days) $hours : $minutes : $seconds<br>Number of added seconds = $number.";
 }
-if ($minutes > 59) {
-    $hours++;
-    $minutes -= 60;
-}
-if ($hours >23) {
-    $hours -= 24;
-}
-echo "New Time: $hours : $minutes : $seconds<br>Number of added seconds = $number.";
 echo '<br><br>';
 
 echo '-------- -------- 11 -------- --------<br>';
