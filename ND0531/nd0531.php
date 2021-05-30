@@ -6,7 +6,7 @@ $surname = 'Petraitis';
 if (strlen($name) < strlen($surname)) {
     echo "$name $surname. Shorter string: $name.";
 } elseif (strlen($name) === strlen($surname)) {
-    echo "$name $surname. Strings are equal.";
+    echo "$name $surname. Strings are equal length.";
 } else {
     echo "$name $surname. Shorter string: $surname.";
 }
@@ -92,4 +92,22 @@ echo "$string<br>The number of words shorter or equal to 5 characters is: $strin
 echo '<br><br>';
 
 echo '-------- -------- 10 -------- --------<br>';
+$c = 'a';
+$chars = array($c);
+while ($c < 'z') {
+    $chars[] = ++$c;
+} 
+// foreach ($chars as $char) {
+//     echo $char . ' ';
+// }
+// echo '<br><br>';
+$randomString = '';
+$stringSize = 25;
+for ($i = 0; $i < $stringSize; $i++) {
+    $randomString = $randomString . $chars[rand(0, 25)];
+}
+echo "Random String (Size: $stringSize): $randomString.";
+echo '<br><br>';
+
+echo '-------- -------- 11 -------- --------<br>';
 
