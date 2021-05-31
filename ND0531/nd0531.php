@@ -120,10 +120,8 @@ $wordSource = array_merge(explode(' ', $string), explode(' ', $string1));
 // foreach ($wordSource as $word) {
 //     echo $word . ' ';
 // }
-$newStringWordCount = 50;
-while ($newStringWordCount > count($wordSource)) {
-    $newStringWordCount--;
-}
+$newStringWordCount = 20;
+$newStringWordCount = $newStringWordCount > count($wordSource) ? count($wordSource) : $newStringWordCount;
 $newString = '';
 $generate = false;
 $usedIndexes[] = '';
