@@ -69,26 +69,28 @@ echo '<br><br>';
 
 echo '-------- -------- 09 -------- --------<br>';
 $string = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+$equalOrLess = 5;
 $stringParts = explode(' ', $string);
 $stringCount = 0;
 foreach ($stringParts as $str) {
-    if (strlen($str) <= 5) {
+    if (strlen($str) <= $equalOrLess) {
         $stringCount++;
     }
 }
-echo "$string<br>The number of words shorter or equal to 5 characters is: $stringCount.<br><br>";
+echo "$string<br>The number of words shorter or equal to $equalOrLess characters is: $stringCount.<br><br>";
 
 $string = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
 $charsToReplace = array('ą', 'č', 'ę', 'ė', 'į', 'š', 'ų', 'ū', 'ž', 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž');
 $newString = str_replace($charsToReplace, '*', $string);
+$newString = str_replace(',', '', $newString);
 $stringParts = explode(' ', $newString);
 $stringCount = 0;
 foreach ($stringParts as $str) {
-    if (strlen($str) <= 5) {
+    if (strlen($str) <= $equalOrLess) {
         $stringCount++;
     }
 }
-echo "$string<br>The number of words shorter or equal to 5 characters is: $stringCount.<br>";
+echo "$string<br>The number of words shorter or equal to $equalOrLess characters is: $stringCount.<br>";
 echo '<br><br>';
 
 echo '-------- -------- 10 -------- --------<br>';
@@ -102,7 +104,7 @@ while ($c < 'z') {
 // }
 // echo '<br><br>';
 $randomString = '';
-$stringSize = 25;
+$stringSize = 30;
 for ($i = 0; $i < $stringSize; $i++) {
     $randomString = $randomString . $chars[rand(0, 25)];
 }
@@ -110,4 +112,37 @@ echo "Random String (Size: $stringSize): $randomString.";
 echo '<br><br>';
 
 echo '-------- -------- 11 -------- --------<br>';
-
+$string = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+$string1 = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+$string = str_replace(',', '', $string);
+$string1 = str_replace(',', '', $string1);
+$wordSource = array_merge(explode(' ', $string), explode(' ', $string1));
+// foreach ($wordSource as $word) {
+//     echo $word . ' ';
+// }
+$newStringSize = 15;
+while ($newStringSize > count($wordSource)) {
+    $newStringSize--;
+}
+$newString = '';
+$generate = false;
+$usedIndexes[] = '';
+for ($i = 0; $i < $newStringSize; $i++) {
+    while (!$generate) {
+        $j = rand(0, count($wordSource) - 1);
+        $generate = true;
+        foreach ($usedIndexes as $index) {
+            if ($j === $index) {
+                $generate = false;
+            }
+        }
+    }
+    $newString = $newString . $wordSource[$j] . ' ';
+    $usedIndexes[] = $j;
+    $generate = false;
+}
+echo $newString . '<br><br>Words Array Indexes used: ';
+foreach ($usedIndexes as $index) {
+    echo $index . ' * ';
+}
+echo '<br><br>';
