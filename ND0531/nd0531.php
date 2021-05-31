@@ -120,14 +120,14 @@ $wordSource = array_merge(explode(' ', $string), explode(' ', $string1));
 // foreach ($wordSource as $word) {
 //     echo $word . ' ';
 // }
-$newStringSize = 15;
-while ($newStringSize > count($wordSource)) {
-    $newStringSize--;
+$newStringWordCount = 50;
+while ($newStringWordCount > count($wordSource)) {
+    $newStringWordCount--;
 }
 $newString = '';
 $generate = false;
 $usedIndexes[] = '';
-for ($i = 0; $i < $newStringSize; $i++) {
+for ($i = 0; $i < $newStringWordCount; $i++) {
     while (!$generate) {
         $j = rand(0, count($wordSource) - 1);
         $generate = true;
