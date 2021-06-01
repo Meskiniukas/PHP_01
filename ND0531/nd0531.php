@@ -47,7 +47,7 @@ echo '<br><br>';
 
 echo '-------- -------- 07 -------- --------<br>';
 $name = 'An American in Paris';
-$charsToReplace = array('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y');
+$charsToReplace = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
 $newName = str_replace($charsToReplace, '', $name);
 echo "Name: $name. Name with removed vowels: $newName.<br>";
 $name = "Breakfast at Tiffany's";
@@ -80,7 +80,7 @@ foreach ($stringParts as $str) {
 echo "$string<br>The number of words shorter or equal to $equalOrLess characters is: $stringCount.<br><br>";
 
 $string = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
-$charsToReplace = array('ą', 'č', 'ę', 'ė', 'į', 'š', 'ų', 'ū', 'ž', 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž');
+$charsToReplace = ['ą', 'č', 'ę', 'ė', 'į', 'š', 'ų', 'ū', 'ž', 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž'];
 $newString = str_replace($charsToReplace, '*', $string);
 $newString = str_replace(',', '', $newString);
 $stringParts = explode(' ', $newString);
