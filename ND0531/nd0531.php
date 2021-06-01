@@ -144,3 +144,20 @@ foreach ($usedIndexes as $index) {
     echo $index . ' * ';
 }
 echo '<br><br>';
+
+echo '-------- -------- 11 *UPDATED* -------- --------<br>';
+$string = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+$string1 = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+$string = str_replace(',', '', $string);
+$string1 = str_replace(',', '', $string1);
+$wordSource = array_merge(explode(' ', $string), explode(' ', $string1));
+$random[] = '';
+$randomWordCount = 20;
+$randomWordCount = $randomWordCount > count($wordSource) ? count($wordSource) : $randomWordCount;
+while (count($random) <= $randomWordCount ) {
+    array_push($random, $wordSource[rand(0, count($wordSource) - 1)]);
+    $random = array_unique($random);
+}
+foreach ($random as $word) {
+    echo $word . ' ';
+}

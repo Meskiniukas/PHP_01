@@ -63,9 +63,9 @@ $columnWidth = 100;
 for ($ii = 0; $ii < $columnWidth; $ii++) {
     for ($i = 0; $i < $columnWidth; $i++) {
         if ($i === $columnWidth - $ii - 1 || $ii === $i) {
-            echo "<span style='line-height: 3px; font-size: 20px;'><font color='red';>*</font></span>";
+            echo "<span style='line-height: 3px; font-size: 16px; color: red;'>*</span>";
         } else {
-            echo "<span style='line-height: 3px; font-size: 18px;'><font color='blue';>*</font></span>";
+            echo "<span style='line-height: 3px; font-size: 14px; color: blue;'>*</span>";
         }
     }
     echo "<span style='font-size: 1px;'><br></span>";
@@ -73,3 +73,63 @@ for ($ii = 0; $ii < $columnWidth; $ii++) {
 echo '<br><br>';
 
 echo '-------- -------- 06 -------- --------<br>';
+$result = '';
+while ($result !== 'H') {
+    $result = rand(0, 1) === 0 ? 'H' : 'S';
+    echo $result . ' ';
+}
+echo '<br>';
+$result = '';
+$hCount = 0;
+while ($hCount !== 3) {
+    $result = rand(0, 1) === 0 ? 'H' : 'S';
+    $hCount = $result === 'H' ? ++$hCount : $hCount;
+    echo $result . ' ';
+}
+echo '<br>';
+$result = '';
+$hCount = 0;
+while ($hCount !== 3) {
+    $result = rand(0, 1) === 0 ? 'H' : 'S';
+    $hCount = $result === 'H' ? ++$hCount : 0;
+    echo $result . ' ';
+}
+echo '<br><br>';
+
+echo '-------- -------- 07 -------- --------<br>';
+$result = '';
+$winner = '';
+$totalPointsKazys = 0;
+$totalPointsPetras = 0;
+while ($totalPointsKazys < 222 && $totalPointsPetras < 222) {
+    $pointsKazys = rand (5, 25);
+    $pointsPetras = rand (10, 20);
+    $totalPointsKazys += $pointsKazys;
+    $totalPointsPetras += $pointsPetras;
+    echo 'Kazys: ' . $pointsKazys . ' points; Petras: ' . $pointsPetras . ' points. ';
+    if ($pointsKazys > $pointsPetras) {
+        $result = 'Kazys';
+    } else {
+        $result = $pointsKazys < $pointsPetras ? 'Petras' : 'Lygiosios';
+    }
+    if ($result !== 'Lygiosios') {
+        echo 'Winner is: ' . $result . '.<br>';
+    } else {
+        echo 'Result is equal.<br>';
+    }
+    if ($totalPointsKazys >= 222 || $totalPointsPetras >= 222) {
+        if ($totalPointsKazys > $totalPointsPetras) {
+            $winner = 'Kazys';
+        } else {
+            $winner = $totalPointsKazys < $totalPointsPetras ? 'Petras' : 'Lygiosios';
+        }
+        if ($winner !== 'Lygiosios') {
+            echo 'TOUR Winner is: ' . $winner . '. TOUR Points: Kazys: ' . $totalPointsKazys . ' points; Petras: ' . $totalPointsPetras . ' points. ';
+        } else {
+            echo 'TOUR Result is equal. TOUR Points: Kazys: ' . $totalPointsKazys . ' points; Petras: ' . $totalPointsPetras . ' points. ';
+        }
+    }
+}
+echo '<br><br>';
+
+echo '-------- -------- 08 -------- --------<br>';
