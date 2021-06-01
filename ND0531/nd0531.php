@@ -80,13 +80,11 @@ foreach ($stringParts as $str) {
 echo "$string<br>The number of words shorter or equal to $equalOrLess characters is: $stringCount.<br><br>";
 
 $string = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
-$charsToReplace = ['ą', 'č', 'ę', 'ė', 'į', 'š', 'ų', 'ū', 'ž', 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž'];
-$newString = str_replace($charsToReplace, '*', $string);
-$newString = str_replace(',', '', $newString);
+$newString = str_replace(',', '', $string);
 $stringParts = explode(' ', $newString);
 $stringCount = 0;
 foreach ($stringParts as $str) {
-    if (strlen($str) <= $equalOrLess) {
+    if (mb_strlen($str) <= $equalOrLess) {
         $stringCount++;
     }
 }
@@ -104,7 +102,7 @@ while ($c < 'z') {
 // }
 // echo '<br><br>';
 $randomString = '';
-$stringSize = 30;
+$stringSize = 3;
 for ($i = 0; $i < $stringSize; $i++) {
     $randomString = $randomString . $chars[rand(0, 25)];
 }

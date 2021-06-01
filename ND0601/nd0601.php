@@ -137,7 +137,7 @@ $dHorizontalOfRhombus = 20;
 $dVerticalOfRhombus = 60;
 for ($ii = 0; $ii < $dVerticalOfRhombus; $ii++) {
     for ($i = 0; $i < $dHorizontalOfRhombus; $i++) {
-        if ($ii <= $dVerticalOfRhombus / $dHorizontalOfRhombus  * $i) {
+        if ($ii <= $dVerticalOfRhombus / $dHorizontalOfRhombus  * $i && $ii >= $dVerticalOfRhombus / $dHorizontalOfRhombus  * ($dHorizontalOfRhombus - $i)) {
             echo "<span style='line-height: 3px; font-size: 16px; color: blue;'>*</span>";
         } else {
             echo "<span style='line-height: 3px; font-size: 16px; color: blue;'>-</span>";
