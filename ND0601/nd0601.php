@@ -133,23 +133,17 @@ while ($totalPointsKazys < 222 && $totalPointsPetras < 222) {
 echo '<br><br>';
 
 echo '-------- -------- 08 -------- --------<br>';
-//  NEBAIGTAS !!!
 $dHorizontalOfRhombus = 20;
 $dVerticalOfRhombus = 60;
+$dverticalHalf = $dVerticalOfRhombus / 2;
+$diagRatio = $dVerticalOfRhombus / $dHorizontalOfRhombus;
 for ($ii = 0; $ii < $dVerticalOfRhombus; $ii++) {
     for ($i = 0; $i < $dHorizontalOfRhombus; $i++) {
-        if ($ii >= $dVerticalOfRhombus / $dHorizontalOfRhombus  * ($i - 9) && $ii <= $dVerticalOfRhombus / $dHorizontalOfRhombus  * ($dHorizontalOfRhombus - ($i - 9))) {
+        if ( $ii >= - $diagRatio * $i  + $dverticalHalf -1 && $ii >= $diagRatio * $i - $dverticalHalf && $ii <= $diagRatio * $i + $dverticalHalf - 1 && $ii < $diagRatio * ($dverticalHalf - $i)) {
             echo '<span style="line-height: 3px; font-size: 16px; color: rgb(' . rand(0,255) . ',' . rand(0,255) . ',' . rand(0,255) . ');">*</span>';
         } else {
-            // echo '<span style="line-height: 3px; font-size: 16px; color: yellow;">*</span>';
+            echo '<span style="line-height: 3px; font-size: 16px; color: yellow;">*</span>';
         }
-
-
-        // if ($ii <= $dVerticalOfRhombus / $dHorizontalOfRhombus  * $i && $ii >= $dVerticalOfRhombus / $dHorizontalOfRhombus  * ($dHorizontalOfRhombus - $i)) {
-        //     echo "<span style='line-height: 3px; font-size: 16px; color: blue;'>*</span>";
-        // } else {
-        //     echo "<span style='line-height: 3px; font-size: 16px; color: blue;'>-</span>";
-        // }
     }
     echo "<span style='font-size: 1px;'><br></span>";
 }
