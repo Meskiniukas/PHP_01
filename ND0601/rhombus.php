@@ -2,8 +2,8 @@
 
 // Height and width adjustable Rhombus
 
-$dHorizontalOfRhombus = 61;
-$dVerticalOfRhombus = 20;
+$dHorizontalOfRhombus = 101;
+$dVerticalOfRhombus = 30;
 $diagRatio = $dVerticalOfRhombus / $dHorizontalOfRhombus;
 echo '<div style="text-align:center;">';
 for ($ii = 0; $ii < $dVerticalOfRhombus; $ii++) {

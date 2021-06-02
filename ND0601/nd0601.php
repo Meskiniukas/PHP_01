@@ -133,8 +133,11 @@ while ($totalPointsKazys < 222 && $totalPointsPetras < 222) {
 echo '<br><br>';
 
 echo '-------- -------- 08 -------- --------<br>';
-$dHorizontalOfRhombus = 61;
-$dVerticalOfRhombus = 20;
+
+// Height and width adjustable Rhombus
+
+$dHorizontalOfRhombus = 101;
+$dVerticalOfRhombus = 30;
 $diagRatio = $dVerticalOfRhombus / $dHorizontalOfRhombus;
 echo '<div style="text-align:center;">';
 for ($ii = 0; $ii < $dVerticalOfRhombus; $ii++) {
