@@ -133,18 +133,25 @@ while ($totalPointsKazys < 222 && $totalPointsPetras < 222) {
 echo '<br><br>';
 
 echo '-------- -------- 08 -------- --------<br>';
-$dHorizontalOfRhombus = 20;
-$dVerticalOfRhombus = 60;
-$dverticalHalf = $dVerticalOfRhombus / 2;
+$dHorizontalOfRhombus = 61;
+$dVerticalOfRhombus = 20;
 $diagRatio = $dVerticalOfRhombus / $dHorizontalOfRhombus;
+echo '<div style="text-align:center;">';
 for ($ii = 0; $ii < $dVerticalOfRhombus; $ii++) {
     for ($i = 0; $i < $dHorizontalOfRhombus; $i++) {
-        if ( $ii >= - $diagRatio * $i  + $dverticalHalf -1 && $ii >= $diagRatio * $i - $dverticalHalf && $ii <= $diagRatio * $i + $dverticalHalf - 1 && $ii < $diagRatio * ($dverticalHalf - $i)) {
+        if ($ii >= $diagRatio  * $i + 1 && $ii <= $diagRatio  * ($dHorizontalOfRhombus - $i) - 1) {
             echo '<span style="line-height: 3px; font-size: 16px; color: rgb(' . rand(0,255) . ',' . rand(0,255) . ',' . rand(0,255) . ');">*</span>';
-        } else {
-            echo '<span style="line-height: 3px; font-size: 16px; color: yellow;">*</span>';
         }
     }
-    echo "<span style='font-size: 1px;'><br></span>";
+    echo '<span style="font-size: 1px;"><br></span>';
 }
-echo '<br><br>';
+echo '</div><br>';
+
+echo '-------- -------- 09 -------- --------<br>';
+
+
+
+
+
+
+
