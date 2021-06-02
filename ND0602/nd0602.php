@@ -103,3 +103,69 @@ foreach ($masyvas as $value) {
 echo '<br><br>';
 
 echo '-------- -------- 03 -------- --------<br>';
+$letters = ['A', 'B', 'C', 'D'];
+for ($i = 0; $i < 200; $i++) {
+    $rmasyvas[] = $letters[rand(0, 3)];
+}
+$aCount = 0;
+$bCount = 0;
+$cCount = 0;
+$dCount = 0;
+foreach ($rmasyvas as $value) {
+    if ($value === 'A') {
+        $aCount++;
+    } elseif ($value === 'B') {
+        $bCount++;
+    } elseif ($value === 'C') {
+        $cCount++;
+    } else {
+        $dCount++;
+    }
+}
+echo 'aCount: ' . $aCount . '; bCount: ' . $bCount . '; cCount: ' . $cCount . '; dCount: ' . $dCount . '.<br><br>';
+
+echo '-------- -------- 04 -------- --------<br>';
+sort($rmasyvas);
+foreach ($rmasyvas as $value) {
+    echo $value . '*';
+}
+echo '<br><br>';
+
+echo '-------- -------- 05 -------- --------<br>';
+$size = 20;
+for ($i = 0; $i < $size; $i++) {
+    $rmasyvas1[] = $letters[rand(0, 3)];
+    $rmasyvas2[] = $letters[rand(0, 3)];
+    $rmasyvas3[] = $letters[rand(0, 3)];
+}
+for ($i = 0; $i < $size; $i++) {
+    $rmasyvasSum[$i] = $rmasyvas1[$i] . $rmasyvas2[$i] . $rmasyvas3[$i];
+}
+
+$originalValuesCount = 0;
+foreach ($rmasyvasSum as $index => $value) {
+    $tmp = str_split($value);
+    $originalValuesCount = $tmp[0] !== $tmp[1] && $tmp[0] !== $tmp[2] && $tmp[1] !== $tmp[2] ? ++$originalValuesCount : $originalValuesCount;
+}
+foreach ($rmasyvasSum as $value) {
+    echo $value . '*';
+}
+echo '<br><br>';
+echo 'Original values count: ' . $originalValuesCount . '.';
+echo '<br><br>';
+
+
+// Bugs below !
+$originalValuesCount_2 = 0;
+for ($ii = 0; $ii < $size - 1; $ii++) {
+    for ($i = $ii + 1; $i < $size; $i++) {
+        if ($rmasyvasSum[$ii] === $rmasyvasSum[$i]) {
+            break;
+        }
+    }
+    $originalValuesCount_2++;
+}
+echo 'originalValuesCount_2: ' . $originalValuesCount_2 . '.';
+echo '<br><br>';
+
+echo '-------- -------- 05 -------- --------<br>';
