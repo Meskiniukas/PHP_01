@@ -1,5 +1,7 @@
 <?php
 
+// Height and width adjustable Rhombus
+
 $dHorizontalOfRhombus = 61;
 $dVerticalOfRhombus = 20;
 $diagRatio = $dVerticalOfRhombus / $dHorizontalOfRhombus;
