@@ -3,7 +3,7 @@
 echo '-------- -------- 01 -------- --------<br>';
 for ($ii = 0; $ii < 10; $ii++) {
     for ($i = 0; $i < 5; $i++) {
-        $masyvas[$ii][$i] = rand (5, 25);
+        $masyvas[$ii][$i] = rand(5, 25);
     }
 }
 _d($masyvas);
@@ -38,8 +38,8 @@ for ($i = 0; $i < count($masyvas[0]); $i++) {
 
 echo '-------- -------- 02 d -------- --------<br>';
 foreach ($masyvas as $index_ii => &$value) {
-    $value[] =  rand (5, 25);
-    $value[] =  rand (5, 25);
+    $value[] =  rand(5, 25);
+    $value[] =  rand(5, 25);
 }
 _d($masyvas);
 
@@ -48,7 +48,7 @@ echo '-------- -------- 02 e -------- --------<br>';
 $sum_i = 0;
 foreach ($masyvas as $value) {
     foreach ($value as $val) {
-        $sum_i +=$val;
+        $sum_i += $val;
     }
     $masyvasNew[] = $sum_i;
     $sum_i = 0;
@@ -57,7 +57,7 @@ _d($masyvasNew);
 
 echo '-------- -------- 03 -------- --------<br>';
 $c = 'A';
-$chars = array($c);
+$chars = [$c];
 while ($c < 'Z') {
     $chars[] = ++$c;
 }
@@ -72,3 +72,41 @@ _d($chars);
 _d($masyvas2);
 
 echo '-------- -------- 04 -------- --------<br>';
+$indexes_min_sorted = [];
+$values_min_sorted = [];
+foreach ($masyvas2 as $value_ii) {
+    $min_i = 21;
+    foreach ($masyvas2 as $index => $value) {
+        $existIndex = false;
+        $existValue = false;
+        foreach ($indexes_min_sorted as $valueOfIndexes) {
+            if ($index === $valueOfIndexes) {
+                $existIndex = true;
+                break;
+            }
+        }
+        if (!$existIndex) {
+            foreach ($values_min_sorted as $sortedValue) {
+                if ($sortedValue === $min_i) {
+                    $existValue = true;
+                    break;
+                }
+            }
+            if (!$existValue) {
+                if (count($value) < $min_i) {
+                    $min_i = count($value);
+                    $index_min_i = $index;
+                }
+            }
+        }
+    }
+    $indexes_min_sorted[] = $index_min_i;
+    $values_min_sorted[] = $min_i;
+}
+_d($indexes_min_sorted);
+_d($values_min_sorted);
+foreach ($indexes_min_sorted as $index => $value) {
+    $masyvas2Sorted[$index] = $masyvas2[$value];
+}
+$masyvas2 = $masyvas2Sorted;
+_d($masyvas2);
