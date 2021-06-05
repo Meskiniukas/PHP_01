@@ -12,12 +12,12 @@ for ($ii = 0; $ii < 10; $ii++) {
     }
     sort($masyvas2[$ii]);
 }
-_d($masyvas2);
+_d($masyvas2, '5-3');
 
 echo '-------- -------- 04 -------- --------<br>';
 // 17 lines of program code :)
 sort($masyvas2);
-_d($masyvas2);
+_d($masyvas2, '5-4');
 $indexes_K_sorted = [];
 foreach ($masyvas2 as $ii => $value_ii) {
     if (in_array('K', $value_ii)) {
@@ -34,4 +34,4 @@ foreach ($indexes_K_sorted as $index => $value) {
     $masyvas2_KSorted[$index] = $masyvas2[$value];
 }
 $masyvas2 = $masyvas2_KSorted;
-_d($masyvas2);
+_d($masyvas2, '5-4');

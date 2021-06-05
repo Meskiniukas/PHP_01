@@ -6,7 +6,7 @@ for ($ii = 0; $ii < 10; $ii++) {
         $masyvas[$ii][$i] = rand(5, 25);
     }
 }
-_d($masyvas);
+_d($masyvas, '5-1');
 
 echo '-------- -------- 02 a -------- --------<br>';
 $countGreater10 = 0;
@@ -15,7 +15,7 @@ foreach ($masyvas as $value) {
         $countGreater10 = $val > 10 ? ++$countGreater10 : $countGreater10;
     }
 }
-_d('Count of > 10 : ' . $countGreater10);
+_d('Count of > 10 : ' . $countGreater10, '5-2a');
 
 echo '-------- -------- 02 b -------- --------<br>';
 $greatest = '';
@@ -24,7 +24,7 @@ foreach ($masyvas as $value) {
         $greatest = $val > $greatest ? $val : $greatest;
     }
 }
-_d('Greatest: ' . $greatest);
+_d('Greatest: ' . $greatest, '5-2b');
 
 echo '-------- -------- 02 c -------- --------<br>';
 $sum_ii = 0;
@@ -32,7 +32,7 @@ for ($i = 0; $i < count($masyvas[0]); $i++) {
     for ($ii = 0; $ii < count($masyvas); $ii++) {
         $sum_ii += $masyvas[$ii][$i];
     }
-    _d('Sum ii = ' . $sum_ii);
+    _d('Sum ii = ' . $sum_ii, '5-2c');
     $sum_ii = 0;
 }
 
@@ -41,7 +41,7 @@ foreach ($masyvas as $index_ii => &$value) {
     $value[] =  rand(5, 25);
     $value[] =  rand(5, 25);
 }
-_d($masyvas);
+_d($masyvas, '5-2d');
 
 
 echo '-------- -------- 02 e -------- --------<br>';
@@ -53,7 +53,7 @@ foreach ($masyvas as $value) {
     $masyvasNew[] = $sum_i;
     $sum_i = 0;
 }
-_d($masyvasNew);
+_d($masyvasNew, '5-2e');
 
 echo '-------- -------- 03 -------- --------<br>';
 $c = 'A';
@@ -68,8 +68,8 @@ for ($ii = 0; $ii < 10; $ii++) {
     }
     sort($masyvas2[$ii]);
 }
-_d($chars);
-_d($masyvas2);
+// _d($chars);
+_d($masyvas2, '5-3');
 
 echo '-------- -------- 04 -------- --------<br>';
 // 60 lines of program code :)
@@ -110,7 +110,7 @@ foreach ($indexes_min_sorted as $index => $value) {
     $masyvas2Sorted[$index] = $masyvas2[$value];
 }
 $masyvas2 = $masyvas2Sorted;
-_d($masyvas2);
+_d($masyvas2, '5-4');
 $indexes_K_sorted = [];
 foreach ($masyvas2 as $ii => $value_ii) {
     foreach ($value_ii as $value) {
@@ -137,6 +137,13 @@ foreach ($indexes_K_sorted as $index => $value) {
     $masyvas2_KSorted[$index] = $masyvas2[$value];
 }
 $masyvas2 = $masyvas2_KSorted;
-_d($masyvas2);
+_d($masyvas2, '5-4');
 
 echo '-------- -------- 05 -------- --------<br>';
+$masyvas3 = array_fill(0, 30, '');
+foreach ($masyvas3 as $ii => $value_ii) {
+    $masyvas3[$ii] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
+}
+_d($masyvas3, '5-5');
+
+echo '-------- -------- 06 -------- --------<br>';
