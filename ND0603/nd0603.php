@@ -147,3 +147,27 @@ foreach ($masyvas3 as $ii => $value_ii) {
 _d($masyvas3, '5-5');
 
 echo '-------- -------- 06 -------- --------<br>';
+sort($masyvas3);
+_d($masyvas3, '5-6');
+
+foreach ($masyvas3 as $ii => $row) {
+    $user_id[$ii]  = $row['user_id'];
+    $place_in_row[$ii] = $row['place_in_row'];
+}
+array_multisort($place_in_row, SORT_DESC, $user_id, SORT_ASC, $masyvas3);
+_d($masyvas3, '5-6');
+
+echo '-------- -------- 07 -------- --------<br>';
+function generateString($length) {
+    $string = '';
+    for ($i = 0; $i < $length; $i++) { 
+        $string = $string . chr(rand(65, 90));
+    }
+return $string;
+}
+foreach ($masyvas3 as $ii => $value_ii) {
+    $masyvas3[$ii] += ['name' => generateString(rand(5, 15)), 'surname' => generateString(rand(5, 15))];
+}
+_d($masyvas3, '5-7');
+
+echo '-------- -------- 08 -------- --------<br>';
