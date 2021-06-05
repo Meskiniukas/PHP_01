@@ -149,21 +149,36 @@ sort($masyvas4);
 _d($masyvas4, '5-9');
 
 echo '-------- -------- 10 -------- --------<br>';
-function customStringGenerator() {
-$string = '#%+*@裡';
-$newString = '';
-$arr = str_split($string, 5);
-$stringArray = str_split($arr[0]);
-$stringArray[] = $arr[1];
-for ($i = 0; $i < rand(1, count($stringArray)); $i++) { 
-    $newString = $newString . $stringArray[rand(0, count($stringArray) - 1)];
-}
-return $newString;
+function customStringGenerator()
+{
+    $string = '#%+*@裡';
+    $newString = '';
+    $arr = str_split($string, 5);
+    $stringArray = str_split($arr[0]);
+    $stringArray[] = $arr[1];
+    $newString = $stringArray[rand(0, count($stringArray) - 1)];
+    return $newString;
 }
 
-$masyvas5 = array_fill(0, 10, '');
+$masyvas5 = array_fill(0, 10, array_fill(0, 10, ''));
 foreach ($masyvas5 as $index => $value) {
-    $masyvas5[$index] = ['value' => customStringGenerator(), 'color' => '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6)];
+    foreach ($value as $key => $value_x) {
+        $masyvas5[$index][$key] = ['value' => customStringGenerator(), 'color' => '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6)];
+    }
 }
 
 _d($masyvas5, '5-10');
+
+echo '<div style="text-align:center;">';
+foreach ($masyvas5 as $index => $value) {
+    foreach ($value as $key => $value_x) {
+        $col = $masyvas5[$index][$key]['color'];
+        $val = $masyvas5[$index][$key]['value'];
+        echo '<span style="font-size: 16px; color:' . $col . ';">' . $val . '</span>';
+        echo '<span style="font-size: 16px; color: white">OOOO</span>';
+    }
+    echo '<br><br><br>';
+}
+echo '</div><br><br>';
+
+echo '-------- -------- 11 -------- --------<br>';
