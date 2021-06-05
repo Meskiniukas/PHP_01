@@ -138,3 +138,5 @@ foreach ($indexes_K_sorted as $index => $value) {
 }
 $masyvas2 = $masyvas2_KSorted;
 _d($masyvas2);
+
+echo '-------- -------- 05 -------- --------<br>';
