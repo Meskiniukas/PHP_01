@@ -149,3 +149,21 @@ sort($masyvas4);
 _d($masyvas4, '5-9');
 
 echo '-------- -------- 10 -------- --------<br>';
+function customStringGenerator() {
+$string = '#%+*@裡';
+$newString = '';
+$arr = str_split($string, 5);
+$stringArray = str_split($arr[0]);
+$stringArray[] = $arr[1];
+for ($i = 0; $i < rand(1, count($stringArray)); $i++) { 
+    $newString = $newString . $stringArray[rand(0, count($stringArray) - 1)];
+}
+return $newString;
+}
+
+$masyvas5 = array_fill(0, 10, '');
+foreach ($masyvas5 as $index => $value) {
+    $masyvas5[$index] = ['value' => customStringGenerator(), 'color' => '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6)];
+}
+
+_d($masyvas5, '5-10');
