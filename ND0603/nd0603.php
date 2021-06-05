@@ -112,12 +112,13 @@ array_multisort($place_in_row, SORT_DESC, $user_id, SORT_ASC, $masyvas3);
 _d($masyvas3, '5-6');
 
 echo '-------- -------- 07 -------- --------<br>';
-function generateString($length) {
+function generateString($length)
+{
     $string = '';
-    for ($i = 0; $i < $length; $i++) { 
+    for ($i = 0; $i < $length; $i++) {
         $string = $string . chr(rand(65, 90));
     }
-return $string;
+    return $string;
 }
 foreach ($masyvas3 as $ii => $value_ii) {
     $masyvas3[$ii] += ['name' => generateString(rand(5, 15)), 'surname' => generateString(rand(5, 15))];
@@ -125,3 +126,26 @@ foreach ($masyvas3 as $ii => $value_ii) {
 _d($masyvas3, '5-7');
 
 echo '-------- -------- 08 -------- --------<br>';
+$sum = 0;
+$masyvas4 = array_fill(0, 10, '');
+foreach ($masyvas4 as &$value_ii) {
+    $length = rand(0, 5);
+    if ($length !== 0) {
+        $value_ii = array_fill(0, $length, '');
+        foreach ($value_ii as $i => &$value_i) {
+            $value_i = rand(0, 10);
+            $sum += $value_i;
+        }
+    } else {
+        $value_ii = rand(0, 10);
+        $sum += $value_ii;
+    }
+}
+_d($masyvas4, '5-8');
+
+echo '-------- -------- 09 -------- --------<br>';
+_d($sum, '5-9');
+sort($masyvas4);
+_d($masyvas4, '5-9');
+
+echo '-------- -------- 10 -------- --------<br>';
