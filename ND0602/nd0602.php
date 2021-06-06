@@ -166,12 +166,12 @@ echo '<br><br>';
 $originalValuesCount_2 = 0;
 foreach ($rmasyvasSum as $key_ii => $value_ii) {
     $count = 0;
-    foreach ($rmasyvasSum as $key_i => $value_i) {
-        if ($value_ii === $value_i) {
+    for ($i = $key_ii + 1; $i < count($rmasyvasSum); $i++) { 
+        if ($value_ii === $rmasyvasSum[$i]) {
             $count++;
         }
     }
-    $originalValuesCount_2 = $count === 1 ? ++$originalValuesCount_2 : $originalValuesCount_2;
+    $originalValuesCount_2 = $count === 0 ? ++$originalValuesCount_2 : $originalValuesCount_2;
 }
 echo 'OriginalValuesCount: ' . $originalValuesCount_2 . '.';
 echo '<br><br>';
