@@ -104,7 +104,8 @@ echo '<br><br>';
 
 echo '-------- -------- 03 -------- --------<br>';
 $letters = ['A', 'B', 'C', 'D'];
-for ($i = 0; $i < 200; $i++) {
+$size = 20;
+for ($i = 0; $i < $size; $i++) {
     $rmasyvas[] = $letters[rand(0, 3)];
 }
 $aCount = 0;
@@ -132,7 +133,7 @@ foreach ($rmasyvas as $value) {
 echo '<br><br>';
 
 echo '-------- -------- 05 -------- --------<br>';
-$size = 20;
+$size = 5;
 for ($i = 0; $i < $size; $i++) {
     $rmasyvas1[] = $letters[rand(0, 3)];
     $rmasyvas2[] = $letters[rand(0, 3)];
@@ -145,27 +146,34 @@ for ($i = 0; $i < $size; $i++) {
 $originalValuesCount = 0;
 foreach ($rmasyvasSum as $index => $value) {
     $tmp = str_split($value);
-    $originalValuesCount = $tmp[0] !== $tmp[1] && $tmp[0] !== $tmp[2] && $tmp[1] !== $tmp[2] ? ++$originalValuesCount : $originalValuesCount;
+    if ($tmp[0] !== $tmp[1] && $tmp[0] !== $tmp[2] && $tmp[1] !== $tmp[2]) {
+        $count = 0;
+        for ($i = $index + 1; $i < count($rmasyvasSum); $i++) { 
+            if ($value === $rmasyvasSum[$i]) {
+                $count++;
+            }
+        }
+        $originalValuesCount = $count === 0 ? ++$originalValuesCount : $originalValuesCount;
+    }
 }
 foreach ($rmasyvasSum as $value) {
     echo $value . '*';
 }
 echo '<br><br>';
-echo 'Original values count: ' . $originalValuesCount . '.';
+echo 'Number of non repeatable values made up of the original characters: ' . $originalValuesCount . '.';
 echo '<br><br>';
 
-
-// Bugs below !
 $originalValuesCount_2 = 0;
-for ($ii = 0; $ii < $size - 1; $ii++) {
-    for ($i = $ii + 1; $i < $size; $i++) {
-        if ($rmasyvasSum[$ii] === $rmasyvasSum[$i]) {
-            break;
+foreach ($rmasyvasSum as $key_ii => $value_ii) {
+    $count = 0;
+    foreach ($rmasyvasSum as $key_i => $value_i) {
+        if ($value_ii === $value_i) {
+            $count++;
         }
     }
-    $originalValuesCount_2++;
+    $originalValuesCount_2 = $count === 1 ? ++$originalValuesCount_2 : $originalValuesCount_2;
 }
-echo 'originalValuesCount_2: ' . $originalValuesCount_2 . '.';
+echo 'OriginalValuesCount: ' . $originalValuesCount_2 . '.';
 echo '<br><br>';
 
-echo '-------- -------- 05 -------- --------<br>';
+echo '-------- -------- 06 -------- --------<br>';

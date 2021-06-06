@@ -152,12 +152,10 @@ echo '-------- -------- 10 -------- --------<br>';
 function customStringGenerator()
 {
     $string = '#%+*@裡';
-    $newString = '';
     $arr = str_split($string, 5);
     $stringArray = str_split($arr[0]);
     $stringArray[] = $arr[1];
-    $newString = $stringArray[rand(0, count($stringArray) - 1)];
-    return $newString;
+    return $stringArray[rand(0, count($stringArray) - 1)];
 }
 
 $masyvas5 = array_fill(0, 10, array_fill(0, 10, ''));
@@ -175,10 +173,25 @@ foreach ($masyvas5 as $index => $value) {
         $col = $masyvas5[$index][$key]['color'];
         $val = $masyvas5[$index][$key]['value'];
         echo '<span style="font-size: 16px; color:' . $col . ';">' . $val . '</span>';
-        echo '<span style="font-size: 16px; color: white">OOOO</span>';
+        echo '<span style="font-size: 16px; color: white">OOO</span>';
     }
-    echo '<br><br><br>';
+    echo '<br><br>';
 }
 echo '</div><br><br>';
 
 echo '-------- -------- 11 -------- --------<br>';
+do {
+    $a = rand(0, 1000);
+    $b = rand(0, 1000);
+} while ($a == $b);
+$long = rand(10,30);
+$sk1 = $sk2 = 0;
+echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+$c = [];
+for ($i=0; $i<$long; $i++) {
+    $c[] = array_rand(array_flip([$a, $b]));
+}
+echo '<h4>Masyvas:</h4>';
+echo '<pre>';
+print_r($c);
+echo '</pre>';
