@@ -180,11 +180,13 @@ echo '-------- -------- 06 -------- --------<br>';
 $masyvas2 = $masyvas3 = [];
 $arrayCount = 10;
 $from = 1;
-$till = 30;
-for ($i = 0; $i < $arrayCount; $i++) { 
-    do $newElement = rand($from, $till); while (in_array($newElement, $masyvas2));
+$till = 20;
+for ($i = 0; $i < $arrayCount; $i++) {
+    do $newElement = rand($from, $till);
+    while (in_array($newElement, $masyvas2));
     $masyvas2[] = $newElement;
-    do $newElement = rand($from, $till); while (in_array($newElement, $masyvas3));
+    do $newElement = rand($from, $till);
+    while (in_array($newElement, $masyvas3));
     $masyvas3[] = $newElement;
 }
 _d($masyvas2, '4-6');
@@ -199,3 +201,26 @@ foreach ($masyvas2 as $key => $value) {
 _d($masyvas4, '4-7');
 
 echo '-------- -------- 08 -------- --------<br>';
+foreach ($masyvas2 as $key => $value) {
+    if (in_array($value, $masyvas3)) {
+        $masyvas5[] = $value;
+    }
+}
+_d($masyvas5, '4-8');
+
+echo '-------- -------- 09 -------- --------<br>';
+foreach ($masyvas2 as $key => $value) {
+    $masyvas6[$value] = $masyvas3[$key];
+}
+_d($masyvas6, '4-9');
+
+echo '-------- -------- 10 -------- --------<br>';
+$arrayCount = 10;
+$masyvas7[] = rand(5, 25);
+$masyvas7[] = rand(5, 25);
+for ($i = 2; $i < $arrayCount; $i++) { 
+    $masyvas7[] = $masyvas7[$i - 2] + $masyvas7[$i - 1];
+}
+_d($masyvas7, '4-10');
+
+echo '-------- -------- 11 -------- --------<br>';
