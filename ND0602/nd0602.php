@@ -148,7 +148,7 @@ foreach ($rmasyvasSum as $index => $value) {
     $tmp = str_split($value);
     if ($tmp[0] !== $tmp[1] && $tmp[0] !== $tmp[2] && $tmp[1] !== $tmp[2]) {
         $count = 0;
-        for ($i = $index + 1; $i < count($rmasyvasSum); $i++) { 
+        for ($i = $index + 1; $i < count($rmasyvasSum); $i++) {
             if ($value === $rmasyvasSum[$i]) {
                 $count++;
             }
@@ -166,7 +166,7 @@ echo '<br><br>';
 $originalValuesCount_2 = 0;
 foreach ($rmasyvasSum as $key_ii => $value_ii) {
     $count = 0;
-    for ($i = $key_ii + 1; $i < count($rmasyvasSum); $i++) { 
+    for ($i = $key_ii + 1; $i < count($rmasyvasSum); $i++) {
         if ($value_ii === $rmasyvasSum[$i]) {
             $count++;
         }
@@ -177,3 +177,25 @@ echo 'OriginalValuesCount: ' . $originalValuesCount_2 . '.';
 echo '<br><br>';
 
 echo '-------- -------- 06 -------- --------<br>';
+$masyvas2 = $masyvas3 = [];
+$arrayCount = 10;
+$from = 1;
+$till = 30;
+for ($i = 0; $i < $arrayCount; $i++) { 
+    do $newElement = rand($from, $till); while (in_array($newElement, $masyvas2));
+    $masyvas2[] = $newElement;
+    do $newElement = rand($from, $till); while (in_array($newElement, $masyvas3));
+    $masyvas3[] = $newElement;
+}
+_d($masyvas2, '4-6');
+_d($masyvas3, '4-6');
+
+echo '-------- -------- 07 -------- --------<br>';
+foreach ($masyvas2 as $key => $value) {
+    if (!in_array($value, $masyvas3)) {
+        $masyvas4[] = $value;
+    }
+}
+_d($masyvas4, '4-7');
+
+echo '-------- -------- 08 -------- --------<br>';
