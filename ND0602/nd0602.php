@@ -218,9 +218,58 @@ echo '-------- -------- 10 -------- --------<br>';
 $arrayCount = 10;
 $masyvas7[] = rand(5, 25);
 $masyvas7[] = rand(5, 25);
-for ($i = 2; $i < $arrayCount; $i++) { 
+for ($i = 2; $i < $arrayCount; $i++) {
     $masyvas7[] = $masyvas7[$i - 2] + $masyvas7[$i - 1];
 }
 _d($masyvas7, '4-10');
 
 echo '-------- -------- 11 -------- --------<br>';
+$arrayCount = 15;
+$arrayCount = $arrayCount % 2 === 0 ? ++$arrayCount : $arrayCount;
+$from = 1;
+$till = 15;
+for ($i = 0; $i < $arrayCount; $i++) {
+    $masyvas8[] = rand($from, $till);
+}
+_d($masyvas8, '4-11');
+foreach ($masyvas8 as $key_ii => &$value_ii) {
+    do {
+        $repeat = false;
+        for ($i = $key_ii - 1; $i >= 0; $i--) {
+            if ($value_ii === $masyvas8[$i]) {
+                $repeat = true;
+                $value_ii = rand($from, $till);
+            }
+        }
+        for ($i = $key_ii + 1; $i < count($masyvas8); $i++) {
+            if ($value_ii === $masyvas8[$i]) {
+                $repeat = true;
+                $value_ii = rand($from, $till);
+            }
+        }
+    } while ($repeat);
+}
+_d($masyvas8, '4-11');
+
+rsort($masyvas8);
+_d($masyvas8, '4-11');
+$sumFirstHalf = $sumSecondHalf = 0;
+$center = ($arrayCount + 1)/ 2 - 1;
+$masyvas9[$center] = $masyvas8[0];
+
+for ($i = $center + 1; $i > 0; $i--) {
+    if ($center - $i >= 0) {
+        $masyvas9[$center - $i] = $masyvas8[$i * 2];
+        $sumFirstHalf += $masyvas8[$i * 2];
+    }
+}
+
+for ($i= 1; $i < $center + 1; $i++) { 
+    $masyvas9[$center + $i] = $masyvas8[$i * 2 - 1];
+    $sumSecondHalf += $masyvas8[$i * 2 - 1];
+}
+
+$masyvas8 = $masyvas9;
+_d($masyvas8, '4-11');
+_d('= Sum of First Half', $sumFirstHalf);
+_d('= Sum of Second Half', $sumSecondHalf);
