@@ -50,3 +50,18 @@ usort($masyvas, function($a, $b) {
 _d($masyvas);
 
 echo '-------- -------- 06 -------- --------<br>';
+$size = 10;
+$from = 2;
+$till = 29;
+for ($i = 0; $i < $size; $i++) {
+    $masyvas2[] = rand($from, $till);
+}
+_d($masyvas2);
+foreach ($masyvas2 as $key => $value) {
+    if (test($value) === 0) {
+        unset($masyvas2[$key]);
+    }
+}
+_d($masyvas2);
+
+echo '-------- -------- 07 -------- --------<br>';
