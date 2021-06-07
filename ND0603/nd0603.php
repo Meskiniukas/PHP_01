@@ -56,41 +56,46 @@ foreach ($masyvas as $value) {
 _d($masyvasNew, '5-2e');
 
 echo '-------- -------- 03 -------- --------<br>';
-$c = 'A';
-$chars = [$c];
-while ($c < 'Z') {
-    $chars[] = ++$c;
-}
 for ($ii = 0; $ii < 10; $ii++) {
     $iSize = rand(2, 20);
     for ($i = 0; $i < $iSize; $i++) {
-        $masyvas2[$ii][$i] = $chars[rand(0, 25)];
+        $masyvas2[$ii][$i] = range('A', 'Z')[rand(0, 25)];
     }
     sort($masyvas2[$ii]);
 }
-// _d($chars);
 _d($masyvas2, '5-3');
 
 echo '-------- -------- 04 -------- --------<br>';
 // 17 lines of program code :)
 sort($masyvas2);
 _d($masyvas2, '5-4');
-$indexes_K_sorted = [];
-foreach ($masyvas2 as $ii => $value_ii) {
-    if (in_array('K', $value_ii)) {
-        $indexes_K_sorted[] = $ii;
+
+usort($masyvas2, function($a, $b) {
+
+    $ak = (int) in_array('K', $a);
+    $bk = (int) in_array('K', $b);
+    if ($ak + $bk == 1) {
+        return $bk <=> $ak;
     }
-}
-foreach ($masyvas2 as $ii => $value_ii) {
-    if (!in_array($ii, $indexes_K_sorted)) {
-        $indexes_K_sorted[] = $ii;
-    }
-}
-// _d($indexes_K_sorted);
-foreach ($indexes_K_sorted as $index => $value) {
-    $masyvas2_KSorted[$index] = $masyvas2[$value];
-}
-$masyvas2 = $masyvas2_KSorted;
+    return count($a) <=> count($b);
+    });
+
+// $indexes_K_sorted = [];
+// foreach ($masyvas2 as $ii => $value_ii) {
+//     if (in_array('K', $value_ii)) {
+//         $indexes_K_sorted[] = $ii;
+//     }
+// }
+// foreach ($masyvas2 as $ii => $value_ii) {
+//     if (!in_array($ii, $indexes_K_sorted)) {
+//         $indexes_K_sorted[] = $ii;
+//     }
+// }
+// // _d($indexes_K_sorted);
+// foreach ($indexes_K_sorted as $index => $value) {
+//     $masyvas2_KSorted[$index] = $masyvas2[$value];
+// }
+// $masyvas2 = $masyvas2_KSorted;
 _d($masyvas2, '5-4');
 
 echo '-------- -------- 05 -------- --------<br>';
