@@ -34,9 +34,10 @@ function test(int $number)
     for ($i = (int) ($number / 2); $i > 1; $i--) {
         $count = $number % $i === 0 ? ++$count : $count;
     }
+    $count = $number <= 1 ? 1 : $count;
     return $count;
 }
-echo test(2);
+echo test(7);
 echo '<br><br>';
 
 echo '-------- -------- 05 -------- --------<br>';
@@ -106,3 +107,21 @@ function sumRecursiveArray($array)
 _d(sumRecursiveArray($masyvas3), '6-8');
 
 echo '-------- -------- 09 -------- --------<br>';
+foreach (range(1, 3) as $value) {
+    $masyvas4[] = rand(1, 33);
+}
+_d($masyvas4, '6-9');
+
+do {
+    $last3Prime = true;
+    for ($i = count($masyvas4) - 1; $i >= count($masyvas4) - 3; $i--) {
+        if (test($masyvas4[$i]) !== 0) {
+            $last3Prime = false;
+            $masyvas4[] = rand(1, 33);
+        }
+    }
+} while (!$last3Prime);
+print_r($masyvas4);
+echo '<br><br>';
+
+echo '-------- -------- 10 -------- --------<br>';
