@@ -125,3 +125,56 @@ print_r($masyvas4);
 echo '<br><br>';
 
 echo '-------- -------- 10 -------- --------<br>';
+function averagePrimes2dArray($array)
+{
+    $sumPrimes = $countPrimes = 0;
+
+    foreach ($array as $value_ii) {
+        foreach ($value_ii as $value_i) {
+            if (test($value_i) === 0) {
+                $sumPrimes += $value_i;
+                $countPrimes++;
+            }
+        }
+    }
+    if ($countPrimes !== 0) {
+        $average = $sumPrimes / $countPrimes;
+    } else {
+        $average = 0;
+    }
+    return $average;
+}
+
+function customReplaceMin2dArray(&$array)
+{
+    $min = 999999999;
+    foreach ($array as $index_ii => $value_ii) {
+        foreach ($value_ii as $index_i => $value_i) {
+            if ($value_i < $min) {
+                $min = $value_i;
+                $minIndexX = $index_i;
+                $minIndexY = $index_ii;
+            }
+        }
+    }
+    $array[$minIndexY][$minIndexX] += 3;
+    return $array[$minIndexY][$minIndexX];
+}
+
+$size2d = 10;
+foreach (range(0, $size2d - 1) as $ii) {
+    foreach (range(0, $size2d - 1) as $i) {
+        $masyvas5[$ii][$i] = rand(1, 100);
+    }
+}
+_d($masyvas5, '6-10');
+_d(averagePrimes2dArray($masyvas5), '6-10');
+
+while (averagePrimes2dArray($masyvas5) < 70) {
+    customReplaceMin2dArray($masyvas5);
+}
+
+_d($masyvas5, '6-10');
+_d(averagePrimes2dArray($masyvas5), '6-10');
+
+echo '-------- -------- 11 -------- --------<br>';
