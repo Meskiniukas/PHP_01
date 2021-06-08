@@ -70,7 +70,7 @@ echo '-------- -------- 04 -------- --------<br>';
 sort($masyvas2);
 _d($masyvas2, '5-4');
 
-usort($masyvas2, function($a, $b) {
+usort($masyvas2, function ($a, $b) {
 
     $ak = (int) in_array('K', $a);
     $bk = (int) in_array('K', $b);
@@ -78,7 +78,7 @@ usort($masyvas2, function($a, $b) {
         return $bk <=> $ak;
     }
     return count($a) <=> count($b);
-    });
+});
 
 // $indexes_K_sorted = [];
 // foreach ($masyvas2 as $ii => $value_ii) {
@@ -101,7 +101,16 @@ _d($masyvas2, '5-4');
 echo '-------- -------- 05 -------- --------<br>';
 $masyvas3 = array_fill(0, 30, '');
 foreach ($masyvas3 as $ii => $value_ii) {
-    $masyvas3[$ii] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
+    do {
+        $uid = rand(1, 30);
+        $unique = true;
+        for ($i = $ii - 1; $i >= 0 ; $i--) { 
+            if ($uid === $masyvas3[$i]['user_id']) {
+                $unique = false;
+            }
+        }
+    } while (!$unique);
+    $masyvas3[$ii] = ['user_id' => $uid, 'place_in_row' => rand(0, 100)];
 }
 _d($masyvas3, '5-5');
 
@@ -189,11 +198,11 @@ do {
     $a = rand(0, 1000);
     $b = rand(0, 1000);
 } while ($a == $b);
-$long = rand(10,30);
+$long = rand(10, 30);
 $sk1 = $sk2 = 0;
-echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+echo '<h3>Skaičiai ' . $a . ' ir ' . $b . '</h3>';
 $c = [];
-for ($i=0; $i<$long; $i++) {
+for ($i = 0; $i < $long; $i++) {
     $c[] = array_rand(array_flip([$a, $b]));
 }
 echo '<h4>Masyvas:</h4>';
