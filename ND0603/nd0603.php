@@ -105,9 +105,7 @@ foreach ($masyvas3 as $ii => $value_ii) {
         $uid = rand(1, 30);
         $unique = true;
         for ($i = $ii - 1; $i >= 0 ; $i--) { 
-            if ($uid === $masyvas3[$i]['user_id']) {
-                $unique = false;
-            }
+            $unique = $uid === $masyvas3[$i]['user_id'] ? false : $unique;
         }
     } while (!$unique);
     $masyvas3[$ii] = ['user_id' => $uid, 'place_in_row' => rand(0, 100)];
@@ -194,6 +192,7 @@ foreach ($masyvas5 as $index => $value) {
 echo '</div><br><br>';
 
 echo '-------- -------- 11 -------- --------<br>';
+// UNDONE !
 do {
     $a = rand(0, 1000);
     $b = rand(0, 1000);
