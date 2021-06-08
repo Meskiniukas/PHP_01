@@ -71,7 +71,8 @@ echo '-------- -------- 07 -------- --------<br>';
 
 function generateArray($generateCount)
 {
-    $count = 8;
+    $count = rand(10, 20);
+    $count = 6;
     foreach (range(1, $count - 1) as $value) {
         $masyvas[] = rand(0, 10);
     }
@@ -81,6 +82,27 @@ function generateArray($generateCount)
     }
     return $masyvas;
 }
-$countToGenerate = 6;
+$countToGenerate = rand(10, 30);
+$countToGenerate = 5;
 $masyvas3 = generateArray($countToGenerate - 1);
+_d($masyvas3, '6-7');
 print_r($masyvas3);
+echo '<br><br>';
+
+echo '-------- -------- 08 -------- --------<br>';
+function sumRecursiveArray($array)
+{
+    static $sum = 0;
+    foreach ($array as $value) {
+        if (!is_array($value)) {
+            $sum += $value;
+        } else {
+            sumRecursiveArray($value);
+        }
+    }
+    return $sum;
+}
+
+_d(sumRecursiveArray($masyvas3), '6-8');
+
+echo '-------- -------- 09 -------- --------<br>';
