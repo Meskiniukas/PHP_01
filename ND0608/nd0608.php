@@ -137,11 +137,7 @@ function averagePrimes2dArray($array)
             }
         }
     }
-    if ($countPrimes !== 0) {
-        $average = $sumPrimes / $countPrimes;
-    } else {
-        $average = 0;
-    }
+    $average = $countPrimes !== 0 ? $sumPrimes / $countPrimes : 0;
     return $average;
 }
 
