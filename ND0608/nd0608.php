@@ -29,9 +29,7 @@ foreach ($numbers[0] as $key => $value) {
 
 // Arvydo:
 
-$h1 = function (string|array $text) : string
-
-{
+$h1 = function (string|array $text): string {
     if (is_array($text)) {
         $text = $text[0];
     }
@@ -99,10 +97,9 @@ function generateArray($generateCount)
     return $masyvas;
 }
 $countToGenerate = rand(10, 30);
-$countToGenerate = 5;
+$countToGenerate = 10;
 $masyvas3 = generateArray($countToGenerate - 1);
-_d($masyvas3, '6-7');
-print_r($masyvas3);
+_dc($masyvas3, '6-7');
 echo '<br><br>';
 
 echo '-------- -------- 08 -------- --------<br>';
@@ -136,7 +133,7 @@ do {
         }
     }
 } while (!$last3Prime);
-print_r($masyvas4);
+_d($masyvas4);
 echo '<br><br>';
 
 echo '-------- -------- 10 -------- --------<br>';
@@ -191,39 +188,23 @@ _d(averagePrimes2dArray($masyvas5), '6-10');
 echo '-------- -------- 11 -------- --------<br>';
 function genArr($masyvasNew, $range)
 {
-    if (is_null($masyvasNew)) {
-        $masyvasNew = [];
-    }
-    for ($ix = 0; $ix < $range; $ix++) { 
-        
-    
-    // foreach (range(0, $range - 1) as $i) {
-        $lottery = rand(1, 5);
-        if ($lottery < 5) {
-            $arr2d = false;
+    foreach (range(0, $range - 1) as $ix) {
+        $lottery = rand(1, 10);
+        if ($lottery < 7) {
             $masyvasNew[] = rand(0, 100);
         } else {
-            $arr2d = true;
-            $size2dY = rand(1, 5);
             $size2dY = 2;
-            _d($ix);
-            // $masyvasNew[$ix] = [];
+            $size2dY = rand(1, 5);
+            $masyvasNew[$ix] = [];
             $masyvasNew[$ix] = genArr($masyvasNew[$ix], $size2dY);
         }
     }
-    if (!$arr2d) {
-        reset($masyvasNew);
-        return $masyvasNew;
-    }
+    return $masyvasNew;
 }
+
 
 $sizeY = rand(10, 100);
 $sizeY = 10;
 $masyvas6 = genArr([], $sizeY);
 
-_d($masyvas6);
-
-
-
-
-
+_dc($masyvas6, '6-11');
