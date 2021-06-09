@@ -215,15 +215,15 @@ function arrayMaxDepthDetect(array $array) {
 
 function recursiveArrayElementCount(array $array)
 {
-    static $sum = 0;
+    static $count = 0;
     foreach ($array as $value) {
         if (!is_array($value)) {
-            $sum++;
+            $count++;
         } else {
             recursiveArrayElementCount($value);
         }
     }
-    return $sum;
+    return $count;
 }
 
 $sizeY = rand(10, 100);
