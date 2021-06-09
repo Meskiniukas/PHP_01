@@ -213,9 +213,24 @@ function arrayMaxDepthDetect(array $array) {
     return $maxDepth;
 }
 
+function recursiveArrayElementCount(array $array)
+{
+    static $sum = 0;
+    foreach ($array as $value) {
+        if (!is_array($value)) {
+            $sum++;
+        } else {
+            recursiveArrayElementCount($value);
+        }
+    }
+    return $sum;
+}
+
 $sizeY = rand(10, 100);
 $sizeY = 10;
 $masyvas6 = genArr([], $sizeY);
 
 _dc($masyvas6, '6-11');
-_d(arrayMaxDepthDetect($masyvas6), '6-11');
+_d(arrayMaxDepthDetect($masyvas6), '6-11. Recursive Array Max Depth = ');
+_d(sumRecursiveArray($masyvas6), '6-11. Sum Recursive Array = ');
+_d(recursiveArrayElementCount($masyvas6), '6-11. Recursive Array Element Count = ');
