@@ -186,11 +186,11 @@ _d($masyvas5, '6-10');
 _d(averagePrimes2dArray($masyvas5), '6-10');
 
 echo '-------- -------- 11 -------- --------<br>';
-function genArr($masyvasNew, $range)
+function genArr(array $masyvasNew, int $range)
 {
     foreach (range(0, $range - 1) as $ix) {
         $lottery = rand(1, 10);
-        if ($lottery < 7) {
+        if ($lottery < 8) {
             $masyvasNew[] = rand(0, 100);
         } else {
             $size2dY = 2;
@@ -202,9 +202,20 @@ function genArr($masyvasNew, $range)
     return $masyvasNew;
 }
 
+function arrayMaxDepthDetect(array $array) {
+    $maxDepth = 1;
+    foreach ($array as $value) {
+        if (is_array($value)) {
+            $depth = arrayMaxDepthDetect($value) + 1;
+            $maxDepth = $depth > $maxDepth ? $depth : $maxDepth;
+        }
+    }
+    return $maxDepth;
+}
 
 $sizeY = rand(10, 100);
 $sizeY = 10;
 $masyvas6 = genArr([], $sizeY);
 
 _dc($masyvas6, '6-11');
+_d(arrayMaxDepthDetect($masyvas6), '6-11');
