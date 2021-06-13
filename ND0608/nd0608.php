@@ -234,3 +234,4 @@ _dc($masyvas6, '6-11');
 _d(arrayMaxDepthDetect($masyvas6), '6-11. Recursive Array Max Depth = ');
 _d(sumRecursiveArray($masyvas6), '6-11. Sum Recursive Array = ');
 _d(recursiveArrayElementCount($masyvas6), '6-11. Recursive Array Element Count = ');
+echo  '<div id=”M1”>10, 46, 67, <div id=”M2”> 89, 45, 89, 34, 90, <div id=”M3”> 84, 97 </div> 90, 56 </div> </div>';
